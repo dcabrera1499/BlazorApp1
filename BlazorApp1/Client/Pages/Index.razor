@@ -1,0 +1,63 @@
+﻿
+@page "/"
+@inject HttpClient Http
+@using BlazorApp1.Shared;
+<h2>Lista de usuarios</h2>
+
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <a href="/usuario/nuevo" class="btn btn-primary" role="button">
+        <i class="fas fa-user-plus"></i>
+        Nuevo Usuario
+        </a>
+
+    </div>
+</div>
+
+<br/>
+
+@if(lista == null)
+{
+    <p><em>Cargando...</em></p>
+}
+else{
+    <table class="table table-striped align-middle table-bordered">
+        <thead class="table-success">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Telefono</th>
+                <th>E-mail</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in lista)
+           {
+               <tr>
+                   
+                <td>@user.Id</td>
+                <td>@user.Nombre</td>
+                <td>@user.Apellido</td>
+                <td>@user.Telefono</td>
+                <td>@user.Email</td>
+
+                <td>
+                        <a href="/usuario/editar/@user.Id" class="btn btn-secondary" role="button">Editar</a>
+                        <a href="/usuario/borrar/@user.Id" class="btn btn-danger" role="button">Eliminar</a>
+                </td>
+
+               </tr>
+               
+           }
+        </tbody>
+    </table>
+}
+
+
+
+
+

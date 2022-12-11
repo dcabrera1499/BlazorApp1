@@ -1,0 +1,14 @@
+﻿<h3>Hamlet</h3>
+<h1>La comida favorita es @ComidaFav</h1>
+
+
+<a href="/user/edit" class="btn btn-secondary" role="button">Editar</a>
+<button @onclick="@(()=>editarComida.InvokeAsync(1))">Borrame este</button>
+
+@code {
+    [Parameter]
+    public String ComidaFav { get; set; } 
+
+    [Parameter]
+    public EventCallback<int> editarComida { get; set; }
+}
